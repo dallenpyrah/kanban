@@ -8,13 +8,13 @@ export class BoardsController extends BaseController {
     super('api/boards')
     this.router
       .get('', this.getAll)
-      .get('/:id/board', this.getBoardsById)
+      .get('/:id', this.getBoardsById)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
+      .get('/:id/lists', this.getListsByBoardId)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.create)
       .delete('/:id', this.delete)
       .put('/:id', this.edit)
-      .get('/:id/lists', this.getListsByBoardId)
   }
 
   async getListsByBoardId(req, res, next) {

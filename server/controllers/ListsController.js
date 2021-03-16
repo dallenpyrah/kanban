@@ -8,7 +8,7 @@ export class ListsController extends BaseController {
     super('api/lists')
     this.router
       .get('', this.getAll)
-      .get('/:id/list', this.getListsById)
+      .get('/:id', this.getListsById)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id/tasks', this.getTasksByListId)

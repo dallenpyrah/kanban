@@ -8,7 +8,7 @@ export class TasksController extends BaseController {
     super('api/tasks')
     this.router
       .get('', this.getAll)
-      .get('/:id/task', this.getTasksById)
+      .get('/:id', this.getTasksById)
       // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:id/comments', this.getCommentsByTaskId)
